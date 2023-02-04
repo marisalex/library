@@ -85,7 +85,9 @@ function submitBtnClicked(){
   
   
    addData(title, author, isbn)
- }
+}
+
+
 
 function addData(title, author, isbn){
   const tbody = document.querySelector("tbody")
@@ -94,16 +96,17 @@ function addData(title, author, isbn){
   const tableInfo = ` <td>${title}</td>
               <td>${author}</td>
               <td>${isbn}</td>
-              <td><button class="remove-btn">
-              <i class="fa-regular fa-trash-can"></i>
-              </button></td>`
+              <td>
+              <i class="fa-regular fa-trash-can remove-btn"></i>
+              </td>`
   
-  tr.innerHTML = tableInfo
+          
+   tr.innerHTML = tableInfo
   
-  tbody.appendChild(tr)
+   tbody.appendChild(tr)
   
-  const removeBtn = tr.getElementsByClassName("remove-btn")[0] 
-  removeBtn.addEventListener("click", removeBtnClicked)
+   const removeBtn = tr.getElementsByClassName("remove-btn")[0] 
+   removeBtn.addEventListener("click", removeBtnClicked)
 }
 
  
@@ -111,11 +114,12 @@ function addData(title, author, isbn){
 
 function removeBtnClicked(e) {
   const removeItem = e.target
+  console.log(removeItem, "check")
    const decision = confirm("Are you sure about removing this item?");
   console.log(decision, "decision");
   if (!decision) {
     return;
   }
-  removeItem.parentElement.parentElement.parentElement.remove()
+  removeItem.parentElement.parentElement.remove()
   
 }
